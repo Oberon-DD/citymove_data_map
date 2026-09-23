@@ -36,10 +36,11 @@ description. It is written so the model can be audited, not only reused.
 
 ## Where the scripts differ from the paper
 
-1. **Title stripping.** `EmbeddingCache.encode` in `citymove_classification_v8.py` passes
-   each text through `extract_discriminative_text`, which keeps only the part before the
-   first colon when that part has at least 15 characters. The published model was trained
-   without this step (see above), as the paper describes. Disable it to reproduce the model.
+1. **Title stripping.** As saved, `EmbeddingCache.encode` in `citymove_classification_v8.py`
+   passed every text through `extract_discriminative_text`, which keeps only the part before
+   the first colon when that part has at least 15 characters. The published model was
+   trained without this step (see above), as the paper describes. The published script
+   therefore has a switch, `STRIP_TITLES`, that is off by default.
 2. **Augmentation model.** The paper names Phi-3-Mini-4K-Instruct (8-bit, llama.cpp via
    Anaconda AI Navigator). The docstring of `synthetic_text_generation.py` names
    Mistral-7B-Instruct-v0.1; the code itself calls whatever model the local llama.cpp
@@ -62,7 +63,10 @@ description. It is written so the model can be audited, not only reused.
   on the published training set is close to, but not identical with, `classifier.pkl`.
 - Local folder paths in the scripts and in `classifier_config.txt` were replaced; the
   scripts now read `classifier/data` or the folder named in `CITYMOVE_CLASSIFIER_DATA`.
-  No other line of the scripts was changed.
+- `citymove_classification_v8.py` gained the `STRIP_TITLES` switch (off), so that it embeds
+  texts the way the published model saw them. With it off, the script's own evaluation of
+  `classifier.pkl` on the static holdout gives weighted F1 0.947 and macro F1 0.858, the
+  figures above. Apart from these two changes the scripts are as saved.
 
 ## Held back for the analysis deposit
 

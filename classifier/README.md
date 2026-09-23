@@ -54,10 +54,11 @@ predict_example.py                    apply the model to new descriptions
 PROVENANCE.md                         how the published files relate to the paper
 ```
 
-The scripts read their files from `classifier/data`; set `CITYMOVE_CLASSIFIER_DATA`
-to point them elsewhere. Rerunning the full pipeline also needs the catalogue
-exports (`to_predict_df.xlsx`, 65,464 rows), which will be deposited with the
-analysis files.
+**How the model was trained** (the active-learning loop, the review step and the
+synthetic text generation) is described in [`scripts/README.md`](scripts/README.md).
+The scripts are published as used, as a record of the method; rerunning the full
+pipeline also needs the catalogue exports (`to_predict_df.xlsx`, 65,464 rows), which
+will be deposited with the analysis files.
 
 Descriptions harvested from Antwerp's geoportal named the staff member who
 maintains each layer. Those names and e-mail addresses are redacted in the
