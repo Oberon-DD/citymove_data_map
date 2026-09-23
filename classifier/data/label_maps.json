@@ -1,0 +1,23 @@
+{
+  "note": "classifier.pkl predicts integer classes 0-7; the index is the position of the label in the alphabetically sorted label set (build_label_maps in scripts/citymove_classification_v8.py). framework_domain gives the matching domain name in data/framework_v5_1.csv.",
+  "idx_to_label": {
+    "0": "Active Transport Environment",
+    "1": "Air Quality",
+    "2": "NCD's",
+    "3": "Other",
+    "4": "Recreational PA",
+    "5": "Recreational and Sports Environment",
+    "6": "Total PA",
+    "7": "Transport PA"
+  },
+  "framework_domain": {
+    "Active Transport Environment": "Supportive active transport environment",
+    "Air Quality": "Air quality",
+    "NCD's": "NCDs",
+    "Other": null,
+    "Recreational PA": "Recreational PA",
+    "Recreational and Sports Environment": "Supportive recreational and sports environment",
+    "Total PA": "Total PA",
+    "Transport PA": "Transport PA"
+  }
+}
