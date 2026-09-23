@@ -186,6 +186,9 @@ def normalize_text_for_dedup(text) -> str:
 # =============================================================================
 
 MIN_TITLE_LENGTH = 15
+# Title stripping was exploratory. The published classifier.pkl was trained on
+# full texts (see ../PROVENANCE.md); set True to embed only the title part.
+STRIP_TITLES = False
 
 
 def extract_discriminative_text(text: str) -> str:
@@ -216,7 +219,7 @@ class EmbeddingCache:
 
     def encode(self, texts: List[str]) -> np.ndarray:
         texts = [str(t) if not isinstance(t, str) else t for t in texts]
-        stripped = [extract_discriminative_text(t) for t in texts]
+        stripped = [extract_discriminative_text(t) for t in texts] if STRIP_TITLES else texts
         keys = [normalize_text_for_dedup(s) for s in stripped]
         missing = [i for i, k in enumerate(keys) if k not in self.cache]
         if missing:
