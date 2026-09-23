@@ -1,0 +1,14 @@
+                                     precision    recall  f1-score   support
+
+       Active Transport Environment       0.67      0.86      0.75         7
+                        Air Quality       1.00      1.00      1.00         1
+                              NCD's       1.00      1.00      1.00         2
+                              Other       0.98      0.99      0.99       109
+                    Recreational PA       1.00      1.00      1.00         2
+Recreational and Sports Environment       1.00      0.80      0.89         5
+                           Total PA       1.00      1.00      1.00         1
+                       Transport PA       1.00      0.33      0.50         3
+
+                           accuracy                           0.96       130
+                          macro avg       0.96      0.87      0.89       130
+                       weighted avg       0.97      0.96      0.96       130

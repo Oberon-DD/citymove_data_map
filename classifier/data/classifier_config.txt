@@ -1,0 +1,58 @@
+
+CITY-MOVE Best Classifier Configuration
+(Local folder paths replaced by <classifier data folder> for publication.)
+=========================================
+
+Generated: 2026-01-31 17:26:45.819702
+
+CLASSIFIER:
+-----------
+Type: SVC (Support Vector Classifier)
+Parameters:
+  C: 100.0
+  break_ties: False
+  cache_size: 200
+  class_weight: balanced
+  coef0: 0.0
+  decision_function_shape: ovr
+  degree: 3
+  gamma: scale
+  kernel: rbf
+  max_iter: -1
+  probability: True
+  random_state: 42
+  shrinking: True
+  tol: 0.001
+  verbose: False
+
+EMBEDDING MODEL:
+----------------
+Model: all-mpnet-base-v2
+Dimensions: 768
+Location: <classifier data folder>\best_embedding_model
+
+FILES CREATED:
+--------------
+Classifier: <classifier data folder>\best_classifier.pkl
+Embedding Model: <classifier data folder>\best_embedding_model
+Configuration: <classifier data folder>\classifier_config.txt
+
+USAGE IN YOUR MAIN SCRIPT:
+--------------------------
+import joblib
+from sentence_transformers import SentenceTransformer
+
+# Load classifier
+clf = joblib.load(r"<classifier data folder>\best_classifier.pkl")
+
+# Load embedding model
+embedding_model = SentenceTransformer(r"<classifier data folder>\best_embedding_model")
+
+# Extract embeddings
+def extract_embeddings(docs):
+    return embedding_model.encode(docs, batch_size=32, show_progress_bar=False)
+
+# Predict
+X = extract_embeddings(["Your text here"])
+predictions = clf.predict(X)
+probabilities = clf.predict_proba(X)

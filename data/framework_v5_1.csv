@@ -1,0 +1,52 @@
+idx,domain,cluster,indicator,operationalisation,literature
+1,Total PA,Overall activity levels,Levels of MVPA,Min/week and/or days/week engaged in MPA or VPA,"[7,42,43]"
+2,Total PA,Overall activity levels,Steps per day,Total steps per day,[42]
+3,Total PA,Overall activity levels,Prevalence of (in)sufficient PA,% of pop. ot meeting WHO PA guidelines,"[7,42]"
+4,Recreational PA,Leisure-time activity,Levels of recreational MVPA,Min/week and/or days/week of recreational MPA/VPA,"[11,43]"
+5,Recreational PA,Leisure-time activity,Sport club membership rates,% of pop. registered with sports clubs,[11]
+6,Recreational PA,Leisure-time activity,Participation in organised sport,% of pop. in organised sport or structured recreation,[11]
+7,Recreational PA,Recreational use,Park user counts,"Park counts (sensors, counters, survey)","[11,46]"
+8,Transport PA,Active travel behaviour,Weekly walking for transport,Min/week and/or days/week,"[11,13,43]"
+9,Transport PA,Active travel behaviour,Weekly cycling for transport,Min/week and/or days/week,"[11,13]"
+10,Transport PA,Active travel behaviour,Mode share by transport type,"% trips by walking, cycling, public transport, private vehicle, etc.","[13,16,22]"
+11,Transport PA,Active travel behaviour,Prevalence of walking / cycling for transport,% of pop. engaging in walking or cycling for transport,[17]
+12,Supportive active transport environment,Urban form and topography,Residential / population density,Dwellings or persons/km²,"[11,17,45]"
+13,Supportive active transport environment,Urban form and topography,Street network structure,"Intersection density, street density, % land to streets","[17,18,23]"
+14,Supportive active transport environment,Urban form and topography,Land-use mix and destination proximity,Entropy or comparable index of mixed land use; Proximity or count of daily destinations,"[11,23,45]"
+15,Supportive active transport environment,Urban form and topography,Topography / slope,Gradient or elevation of study area,"[11,45]"
+16,Supportive active transport environment,Public transport and mobility provision,Population with public transport access,% of pop. within walking distance of stop; frequency-adjusted,"[18,23,45]"
+17,Supportive active transport environment,Public transport and mobility provision,Public transport density,Stops per km² or comparable coverage metric,"[11,46]"
+18,Supportive active transport environment,Public transport and mobility provision,Mass transport network length,"Total km of rail/train, tram, metro, bus routes",[23]
+19,Supportive active transport environment,Public transport and mobility provision,Average daily travel time,Mean travel time per person/day or per trip/day,[23]
+20,Supportive active transport environment,Walking and cycling infrastructure,Roads to footpaths / cycle lanes ratio,"Relative supply of roads, footpaths, and cycle lanes (km or km/km²)","[13,16]"
+21,Supportive active transport environment,Walking and cycling infrastructure,Cycling infrastructure supply,Km or km² by cycling path type and cycling amenities,"[13,18,22]"
+22,Supportive active transport environment,Walking and cycling infrastructure,Bike-share coverage,Stations or bikes per km² and/or per capita,"[18,19]"
+23,Supportive active transport environment,Walking and cycling infrastructure,Pedestrian infrastructure quality,"Sidewalk continuity, width, crossings, curb cuts",[46]
+24,Supportive active transport environment,Walking and cycling infrastructure,Car-free streets / pedestrian zones,"Presence, extent, or area",[22]
+25,Supportive active transport environment,Safety and security,Speed management / traffic calming,"Coverage of low-speed zones, traffic calming, or speed-reduction infrastructure","[22,45,46]"
+26,Supportive active transport environment,Safety and security,Perceived safety for walking,% of pop. feeling safe feeling safe walking,"[23,46]"
+27,Supportive active transport environment,Safety and security,Crime incidence,Rates or counts in public space,[23]
+28,Supportive active transport environment,Safety and security,Street illumination coverage,% of street network with lighting,[46]
+29,Supportive active transport environment,Safety and security,Road traffic injury and fatality rates,"Per 100,000 pop. and/or per road user","[23,46]"
+30,Supportive recreational and sports environment,Public open space,Public open space (% of urban land),"% urban land allocated to open public space (squares, plazas, pedestrian areas)","[13,16,23]"
+31,Supportive recreational and sports environment,Public open space,Population with open space access,% of pop. within walking distance of public open space,"[18,23,45]"
+32,Supportive recreational and sports environment,Green space and parks,Urban green space,"% of urban land allocated to parks, gardens, green space","[13,16,23]"
+33,Supportive recreational and sports environment,Green space and parks,Population with green space access,% of pop. within walking distance of green space,"[18,23,45]"
+34,Supportive recreational and sports environment,Green space and parks,Park density within walking distance,Number of area of parks within walking distance,"[11,46]"
+35,Supportive recreational and sports environment,Green space and parks,Tree canopy coverage,% land/street network with tree coverage,"[23,46]"
+36,Supportive recreational and sports environment,Green space and parks,Natural and protected green space,"% land as forest, ecosystems, or protected space",[23]
+37,Supportive recreational and sports environment,Green space and parks,Beachfront / waterfront access,Access to blue-space environments,[46]
+38,Supportive recreational and sports environment,Green space and parks,Playgrounds,"Location, density, or area","[45,46]"
+39,Supportive recreational and sports environment,Recreational and sports facilities,Gym / fitness centre access,Presence or density within walking distance,[45]
+40,Supportive recreational and sports environment,Recreational and sports facilities,Sports infrastructure and sports clubs,"Location, density, or area (v5.1: semantically includes swimming pools, street-placed gym equipment, ice rinks and similar sports infrastructure)","[45,46]"
+41,Supportive recreational and sports environment,Recreational and sports facilities,Recreational walking / cycling tracks,Km or density of dedicated trails,"[18,22]"
+42,NCDs,Disease burden,Age-standardised NCD mortality rate,Premature NCD mortality,"[23,42,44]"
+43,NCDs,Disease burden,Prevalence of obesity and overweight,% of pop. with BMI ≥25 and/or BMI ≥30,"[42,44]"
+44,NCDs,Disease burden,Prevalence of diabetes,% of pop. diagnosed with type 2 diabetes,"[42,44]"
+45,NCDs,Disease burden,Prevalence of CVD and hypertension,% of pop. with CVD and/or hypertension,"[42,44]"
+46,NCDs,Disease burden,Prevalence of COPD / respiratory disease,% of population with COPD or other chronic respiratory disease,"[23,44]"
+47,Air quality,Ambient air pollution,PM2.5 concentration,"Annual, monthly or daily mean (µg/m³)","[13,18,47]"
+48,Air quality,Ambient air pollution,PM10 concentration,"Annual, monthly or daily mean (µg/m³)","[23,47]"
+49,Air quality,Ambient air pollution,NO₂ concentration,"Annual, monthly or daily mean (µg/m³)",[47]
+50,Air quality,Ambient air pollution,Modelled air quality,"Modelled surfaces or gridded estimates (DIMAQ, LUR)",[47]
+51,Air quality,Ambient air pollution,Local sensor station readings,Fixed or mobile sensor monitoring,"[23,46,47]"

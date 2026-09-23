@@ -1,0 +1,20 @@
+# Add the co-authors and, once the paper is published, a preferred-citation block for it.
+cff-version: 1.2.0
+message: "If you use these data or the classifier, please cite the City-Move WP4 methods paper and this repository."
+title: "City-Move WP4: routine data inventory, indicator mapping and screening classifier for six cities"
+type: dataset
+authors:
+  - family-names: "De Deurwaerder"
+    given-names: "Oberon"
+    affiliation: "University of Antwerp"
+repository-code: "https://github.com/Oberon-DD/citymove_data_map"
+url: "https://oberon-dd.github.io/citymove_data_map/"
+license: CC0-1.0
+keywords:
+  - physical activity
+  - routine data
+  - open government data
+  - urban health
+  - GAPPA
+  - indicator framework
+  - text classification
