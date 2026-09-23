@@ -27,8 +27,10 @@ none), and open an indicator to list the records themselves, each linked to its 
 | Path | What it is |
 |---|---|
 | [`index.html`](index.html), [`map_data.js`](map_data.js) | The interactive map (GitHub Pages). `map_data.js` is generated from the master inventory. |
-| [`data/`](data) | The master inventory as CSV and XLSX, the framework, and the [data dictionary](data/DATA_DICTIONARY.md). |
-| [`classifier/`](classifier) | The SVM classifier of Appendix A: model, training and holdout data, scripts, outputs, and a [provenance note](classifier/PROVENANCE.md). |
+| [`data/`](data) | The master inventory (CSV and XLSX) with every record's source and link, the indicator framework, and the [data dictionary](data/README.md). |
+| [`classifier/data/`](classifier/data) | The trained SVM classifier of Appendix A with its training and holdout data. |
+| [`classifier/scripts/`](classifier/scripts) | The classifier trainer (active learning with manual review) and the synthetic text generation, with a [description of how the model was trained](classifier/scripts/README.md). |
+| [`classifier/`](classifier) | Model selection and validation outputs, a prediction example, and a [provenance note](classifier/PROVENANCE.md) relating the files to the paper. |
 | [`tools/`](tools) | Scripts that build the public data files and the map data. |
 
 ## Using the data
@@ -43,7 +45,7 @@ print(direct.groupby("city")["uid"].count())
 ```
 
 Each record has a `resource_url` that leads to the dataset, layer, table or file on the
-publisher's platform. The [data dictionary](data/DATA_DICTIONARY.md) explains every column.
+publisher's platform. The [data dictionary](data/README.md) explains every column.
 
 ## Rebuilding
 

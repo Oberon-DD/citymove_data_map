@@ -120,7 +120,7 @@ def main(src):
         f"{len(m):,} records (sheet 'Master (full)')",
         f"{len(live):,} records where fit is 'Direct match' or 'Relevant proxy'",
         f"{(m['fit'] == 'PROPOSED EXIT').sum():,} records where fit is 'PROPOSED EXIT' (kept for transparency)",
-        "See data/DATA_DICTIONARY.md in the repository",
+        "See data/README.md in the repository",
         f"{len(fw)} indicators in 13 clusters and 7 domains (sheet 'Framework v5.1')",
         f"{n_redact} maintainer names or e-mail addresses in {n_cells} text cells replaced by '[redacted]'",
         f"{n_notes} review notes edited for publication (wording and line-wrap repairs only)",
