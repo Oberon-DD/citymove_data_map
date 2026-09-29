@@ -76,6 +76,23 @@ identical. Two kinds of text were changed:
 `framework_v5_1.csv` lists the 51 indicators of framework v5.1 with their domain,
 cluster, operationalisation and the paper's reference numbers for each.
 
+## Link check
+
+`link_check.csv` records, for each of the 6,966 distinct links in the analysed
+inventory, whether it still answered when last checked (`tools/check_links.py`):
+`ok`; `dead` (the page is gone: 404 or 410, or a server error for a SiStat table that no
+longer exists); `error` (another HTTP error, often a platform refusing automated
+requests); or `unreachable` (no answer from the checking location). On
+29 September 2026, 48 links were dead: 34 SiStat tables, 12 layers of the Antwerp
+geoportal, and one each on data.overheid.nl and the UBOS microdata catalogue. The map
+sends those records to the platform's start page instead, where they can be looked up
+by title. The master keeps the original links.
+
+Four platforms answered from only a few of about 40 test locations worldwide on the
+same day: Stad in Cijfers (Antwerp), Onderzoek010 (Rotterdam), and SIMUR and Datos
+Abiertos Bogotá (Bogotá). Their links are not broken, but they may not open for
+visitors in other countries. Together they hold 7,030 of the 8,071 analysed records.
+
 ## Licence
 
 CC0 1.0 (see `LICENSE`). Titles and descriptions are catalogue metadata published by
