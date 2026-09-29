@@ -2,8 +2,10 @@
 
     python tools/build_map.py
 
-Reads data/WP4_master_full.csv and data/framework_v5_1.csv and writes
-map_data.js at the repository root. Only the analysed inventory is mapped
+Reads data/WP4_master_full.csv, data/framework_v5_1.csv and, when present,
+data/link_check.csv (tools/check_links.py), and writes map_data.js at the
+repository root. A record whose link is dead gets the start page of its
+platform instead, where it can be looked up by name. Only the analysed inventory is mapped
 (fit 'Direct match' or 'Relevant proxy'); records excluded after review stay in
 the master but are not drawn. Rerun after every change to the master.
 """
@@ -12,13 +14,16 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import pandas as pd
 
 REPO = Path(__file__).resolve().parents[1]
 MASTER = REPO / "data" / "WP4_master_full.csv"
 FRAMEWORK = REPO / "data" / "framework_v5_1.csv"
+LINK_CHECK = REPO / "data" / "link_check.csv"
 OUT = REPO / "map_data.js"
+INDEX = REPO / "index.html"
 
 CITIES = {  # label, country, marker position and zoom used when a city is opened
     "Antwerp": ("Antwerp", "Belgium", 51.2194, 4.4025, 5.0),
@@ -50,6 +55,23 @@ PLATFORM_NAMES = {
 }
 DESC_MAX = 700  # characters shown on the map; the master holds the full text
 
+# Where to look a record up by name when its own link is dead. An ArcGIS layer falls back to
+# its service page, which lists every layer by name; any other site to its start page.
+FALLBACK = {
+    "pxweb.stat.si": "https://pxweb.stat.si/SiStatData/pxweb/en/Data/",
+    "data.overheid.nl": "https://data.overheid.nl/datasets",
+    "microdata.ubos.org": "https://www.ubos.org/",
+}
+ARCGIS_LAYER = re.compile(r"^(https?://.+/(?:MapServer|FeatureServer))/\d+/?$")
+# Platforms that answered from only a few of about 40 test locations worldwide
+# (check-host.net, 29 September 2026); their links may not open from elsewhere.
+GEO_LIMITED = {
+    "stadincijfers.antwerpen.be": "Stad in Cijfers",
+    "onderzoek010.nl": "Onderzoek010",
+    "sig.simur.gov.co": "SIMUR",
+    "datosabiertos.bogota.gov.co": "Datos Abiertos Bogota",
+}
+
 # Record kinds, in display order
 DIRECT, DIRECT_SPAN, PROXY_LINKED, CONTEXT = 0, 1, 2, 3
 
@@ -57,6 +79,14 @@ DIRECT, DIRECT_SPAN, PROXY_LINKED, CONTEXT = 0, 1, 2, 3
 def source_name(raw):
     tag = re.search(r"\((df_[a-k])\)\s*$", raw)
     return PLATFORM_NAMES[tag.group(1)] if tag else raw.strip()
+
+
+def fallback(url):
+    layer = ARCGIS_LAYER.match(url)
+    if layer:
+        return layer.group(1)
+    parts = urlsplit(url)
+    return FALLBACK.get(parts.netloc, f"{parts.scheme}://{parts.netloc}/")
 
 
 def short(text, n):
@@ -77,7 +107,12 @@ def main():
     i_idx = {x: i for i, x in enumerate(indicators)}
     c_dom = dict(zip(fw["cluster"], fw["domain"]))
 
-    sources, spatial, temporal = [], [], []
+    checked, checked_on = {}, None
+    if LINK_CHECK.exists():
+        lc = pd.read_csv(LINK_CHECK, dtype=str, keep_default_na=False)
+        checked, checked_on = dict(zip(lc["url"], lc["verdict"])), lc["checked_on"].max()
+
+    sources, spatial, temporal, limited = [], [], [], []
 
     def code(lst, value):
         if value not in lst:
@@ -98,11 +133,14 @@ def main():
         else:
             kind, ind = CONTEXT, -1
         url = r.resource_url.strip()
+        host = urlsplit(url).netloc
         records[r.city].append([
             r.uid, short(r.title, 300), short(r.description_en, DESC_MAX), code(sources, source_name(r.source)),
             url if re.match(r"^https?://", url) else "", kind, c_idx[r.cluster], ind, spans,
             code(spatial, r.spatial_label), code(temporal, r.temporal_label),
             int(r.year_min) if r.year_min else None, int(r.year_max) if r.year_max else None,
+            fallback(url) if checked.get(url) == "dead" else None,
+            code(limited, GEO_LIMITED[host]) if host in GEO_LIMITED else -1,
         ])
 
     payload = {
@@ -111,12 +149,13 @@ def main():
             "master_sha256": hashlib.sha256(MASTER.read_bytes()).hexdigest(),
             "records": int(len(live)),
             "excluded": int((m["fit"] == "PROPOSED EXIT").sum()),
+            "links_checked": checked_on,
         },
         "domains": [{"name": d, "color": DOMAIN_COLORS[d]} for d in domains],
         "clusters": [{"name": c, "domain": d_idx[c_dom[c]]} for c in clusters],
         "indicators": [{"name": x, "cluster": c_idx[c], "op": op}
                        for x, c, op in zip(fw["indicator"], fw["cluster"], fw["operationalisation"])],
-        "sources": sources, "spatial": spatial, "temporal": temporal,
+        "sources": sources, "spatial": spatial, "temporal": temporal, "limited": limited,
         "cities": {k: {"label": v[0], "country": v[1], "lat": v[2], "lon": v[3], "zoom": v[4],
                        "n": len(records[k])} for k, v in CITIES.items()},
         "records": records,
@@ -125,10 +164,19 @@ def main():
     OUT.write_text("/* Generated by tools/build_map.py from data/WP4_master_full.csv. Do not edit by hand. */\n"
                    f"window.MAP_DATA = {body};\n", encoding="utf-8")
 
+    # Point index.html at this exact version, so browsers never pair a new page with cached old data.
+    digest = hashlib.sha256(OUT.read_bytes()).hexdigest()[:10]
+    page = INDEX.read_text(encoding="utf-8")
+    page, found = re.subn(r'<script src="map_data\.js(?:\?v=\w+)?"></script>', f'<script src="map_data.js?v={digest}"></script>', page)
+    assert found == 1, "index.html should load map_data.js exactly once"
+    INDEX.write_text(page, encoding="utf-8")
+
     n = sum(len(v) for v in records.values())
     assert n == len(live) == 8071, n
     print(f"wrote {OUT.name}: {n:,} records, {OUT.stat().st_size / 1e6:.2f} MB")
     print({k: len(v) for k, v in records.items()})
+    print("records with a dead link (fallback to the platform):", {k: sum(1 for x in v if x[13]) for k, v in records.items()})
+    print("records on geo-limited platforms:", {k: sum(1 for x in v if x[14] >= 0) for k, v in records.items()})
 
 
 if __name__ == "__main__":

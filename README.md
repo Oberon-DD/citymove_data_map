@@ -10,7 +10,9 @@ exploring the records.
 
 Click a city to see how its records spread over the framework's domains, open a domain
 to see every indicator with its direct and proxy records (including the indicators with
-none), and open an indicator to list the records themselves, each linked to its source.
+none), and open an indicator to list the records themselves. Clicking a record opens its
+source in a new tab. Every view has its own link, for example
+<https://oberon-dd.github.io/citymove_data_map/#/antwerp>.
 
 ## In numbers
 
@@ -47,11 +49,19 @@ print(direct.groupby("city")["uid"].count())
 Each record has a `resource_url` that leads to the dataset, layer, table or file on the
 publisher's platform. The [data dictionary](data/README.md) explains every column.
 
+Links age. `data/link_check.csv` records which ones still answered at the last check;
+on the map, a record whose link has died opens its platform's start page instead, where
+it can be looked up by title. Stad in Cijfers (Antwerp), Onderzoek010 (Rotterdam) and two
+Bogotá platforms answer visitors from only some countries, so their links may not open
+everywhere ([details](data/README.md#link-check)).
+
 ## Rebuilding
 
-The map reads `map_data.js`; regenerate it after any change to the master:
+The map reads `map_data.js`; regenerate it after any change to the master, and check the
+links now and then:
 
 ```bash
+python tools/check_links.py
 python tools/build_map.py
 ```
 
