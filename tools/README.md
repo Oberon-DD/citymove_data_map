@@ -15,3 +15,5 @@ catch links that have died:
 python tools/check_links.py
 python tools/build_map.py
 ```
+
+These scripts were developed with Claude (Anthropic) as a contributor.

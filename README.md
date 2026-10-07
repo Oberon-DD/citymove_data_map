@@ -85,6 +85,11 @@ linked here once they have a DOI.
   characterised spatial resolution, retrospective depth and update cadence.
 - Contributions of further cities to the map.
 
+## Credits
+
+The interactive map and the build scripts in [`tools/`](tools) were developed with
+Claude (Anthropic) as a contributor.
+
 ## Citation and licence
 
 Please cite the paper (reference to follow on publication) and this repository
