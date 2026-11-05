@@ -4,53 +4,136 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CITY-MOVE · Oberon De Deurwaerder</title>
-<meta name="description" content="CITY-MOVE, and my work in it on routine city data for active and healthier urban environments.">
+<meta name="description" content="CITY-MOVE studies how cities can support active movement for health. Links to the project, the poster, the data map and the protocol paper.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#002D42;--text:#125A85;--muted:#4a5863;--city:#807CB9;--tint:#F1F0F8;--line:#d5dde2;--bg:#ffffff}
-@media (prefers-color-scheme: dark){:root{--ink:#e6eef3;--text:#b9d3e4;--muted:#9fb0bc;--city:#a7a3d8;--tint:#22253a;--line:#33424c;--bg:#0f1a20}}
+:root{--ground:#F3F6F5;--ink:#0E3B4F;--text:#263F4A;--muted:#5A6E77;--teal:#1A7F79;--violet:#8E63B5;--rule:#D3DDDB;--hex:#C9D6D3;--card:#FFFFFF}
+@media (prefers-color-scheme: dark){:root{--ground:#0D1F27;--ink:#E4EEF0;--text:#C3D3D8;--muted:#8FA4AC;--teal:#3FB3AA;--violet:#B596D6;--rule:#24404B;--hex:#1F3A45;--card:#122A34}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 'Open Sans',Arial,sans-serif}
-main{max-width:680px;margin:0 auto;padding:40px 16px 56px}
-h1,h2{font-family:Montserrat,Arial,sans-serif;color:var(--ink);margin:0}
-h1{font-size:clamp(28px,6vw,38px);line-height:1.15}
-h2{font-size:20px;margin:36px 0 10px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--text);font:400 1.0625rem/1.7 Literata,Georgia,serif}
+a:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:2px}
+
+.hero{position:relative;height:min(52vh,460px);min-height:300px;overflow:hidden;border-bottom:1px solid var(--rule);touch-action:pan-y}
+#field{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-inner{position:absolute;left:0;right:0;bottom:0;max-width:720px;margin:0 auto;padding:0 20px 28px;pointer-events:none}
+.tag{display:inline-block;background:var(--violet);color:#fff;font:700 .85rem/1 'Bricolage Grotesque',system-ui,sans-serif;padding:7px 12px;margin-bottom:14px}
+h1{font:700 clamp(2.3rem,9vw,4rem)/0.98 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-0.02em;color:var(--ink);margin:0;max-width:11ch}
+h1 span{background:color-mix(in srgb,var(--ground) 85%,transparent);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hint{position:absolute;right:20px;top:16px;font:500 .85rem/1.35 'Bricolage Grotesque',system-ui,sans-serif;color:var(--muted);max-width:20ch;text-align:right;pointer-events:none}
+
+main{max-width:720px;margin:0 auto;padding:28px 20px 56px}
+.who{font:500 1rem/1.4 'Bricolage Grotesque',system-ui,sans-serif;color:var(--muted);margin:0 0 18px}
+.lead{font-size:clamp(1.12rem,3.6vw,1.3rem);line-height:1.55;color:var(--ink);margin:0 0 32px}
+h2{font:700 1.3rem/1.2 'Bricolage Grotesque',system-ui,sans-serif;color:var(--ink);margin:40px 0 10px}
 p{margin:0 0 12px}
-.tag{display:inline-block;background:var(--city);color:#fff;font:700 14px Montserrat,Arial,sans-serif;padding:4px 12px;margin-bottom:14px}
-.sub{color:var(--muted);margin-top:8px}
-.lead{background:var(--tint);color:var(--ink);padding:18px 22px;margin:24px 0 0;font-size:18px}
-.links{display:grid;gap:10px;margin-top:4px}
-.links a{display:block;padding:16px 20px;border:2px solid var(--line);text-decoration:none;color:var(--ink);font-weight:600}
-.links a span{display:block;font-weight:400;color:var(--muted);font-size:15px}
-.links a:hover,.links a:focus-visible{border-color:var(--city)}
-footer{margin-top:44px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+.links{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.links a{display:grid;grid-template-columns:28px 1fr;column-gap:14px;align-items:center;padding:16px 18px;background:var(--card);border:1px solid var(--rule);border-radius:6px;text-decoration:none;color:var(--ink);font:700 1.08rem/1.25 'Bricolage Grotesque',system-ui,sans-serif;transition:border-color .15s}
+.links a:hover{border-color:var(--teal)}
+.links svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
+.links small{font:400 .95rem/1.4 Literata,Georgia,serif;color:var(--muted)}
+footer{max-width:720px;margin:0 auto;padding:18px 20px 32px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--rule)}
+@media (max-width:600px){.hint{display:none}}
+@media (prefers-reduced-motion: reduce){.links a{transition:none}}
 </style>
 </head>
 <body>
-<main>
-  <span class="tag">CITY-MOVE</span>
-  <h1>Healthier urban environments</h1>
-  <p class="sub">Oberon De Deurwaerder · PhD researcher, University of Antwerp</p>
+<header class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <p class="hint">Hexagons light up within a short walk of your pointer.</p>
+  <div class="hero-inner">
+    <span class="tag">CITY-MOVE</span>
+    <h1><span>Healthier urban environments</span></h1>
+  </div>
+</header>
 
+<main>
+  <p class="who">Oberon De Deurwaerder · PhD researcher, University of Antwerp</p>
   <p class="lead">Parks, playgrounds, cycle paths, bus stops and safe streets shape how much people move, and cities already record most of them in their routine data. CITY-MOVE works with six cities to learn which actions get people moving, and how cities can follow what changes and for whom.</p>
+
+  <ul class="links">
+    <li><a href="https://www.citymove.info">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>
+      CITY-MOVE website<small>citymove.info</small></a></li>
+    <li><a href="poster.pdf">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>
+      The poster (PDF)<small>Urban Transitions 2026, Antwerp</small></a></li>
+    <li><a href="https://oberon-dd.github.io/citymove_data_map/">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>
+      Interactive data map<small>Routine data across the six partner cities</small></a></li>
+    <li><a href="https://doi.org/10.1136/bmjopen-2024-098226">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/></svg>
+      Protocol paper<small>Van Olmen et al. (2025), BMJ Open 15(9): e098226</small></a></li>
+    <li><a href="[LINKEDIN URL]">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></svg>
+      LinkedIn<small>Oberon De Deurwaerder</small></a></li>
+  </ul>
 
   <h2>About CITY-MOVE</h2>
   <p>CITY-MOVE studies how cities can accelerate, support and evaluate actions for active movement for health. It follows 13 physical activity actions in six cities on three continents: Antwerp, Bogotá, Kampala, Lima, Ljubljana and Rotterdam.</p>
 
   <h2>My role</h2>
   <p>I work on the data side of the project: what cities already collect about the places where people walk, play and cycle, and what that routine data can show. First I mapped the routine data available in the six partner cities. Now I rebuild those data for every home, to measure what residents have within reach, how it changes over time, and which changes can be studied as natural experiments.</p>
-
-  <h2>Links</h2>
-  <nav class="links">
-    <a href="https://www.citymove.info">CITY-MOVE website <span>citymove.info</span></a>
-    <a href="poster.pdf">The poster (PDF) <span>Urban Transitions 2026, Antwerp</span></a>
-    <a href="https://oberon-dd.github.io/citymove_data_map/">Interactive data map <span>Routine data across the six partner cities</span></a>
-    <a href="https://doi.org/10.1136/bmjopen-2024-098226">Protocol paper <span>Van Olmen et al. (2025), BMJ Open 15(9): e098226</span></a>
-    <a href="[LINKEDIN URL]">LinkedIn <span>Oberon De Deurwaerder</span></a>
-  </nav>
-
-  <footer>CITY-MOVE is funded by the European Union under Horizon Europe (Grant No. 101136358).</footer>
 </main>
+
+<footer>CITY-MOVE is funded by the European Union under Horizon Europe (Grant No. 101136358).</footer>
+
+<script>
+(() => {
+  const c = document.getElementById('field'), ctx = c.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let W, H, R, hexes = [], home = {x: 0, y: 0}, target = null, reach = 0, t0 = null, raf = null;
+  function build() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = c.clientWidth; H = c.clientHeight;
+    c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    R = Math.max(13, Math.min(24, W / 40));
+    const w = Math.sqrt(3) * R, h = 1.5 * R; hexes = [];
+    for (let row = -1, y = -R; y < H + R; row++, y = row * h)
+      for (let col = -1; col * w < W + w; col++) hexes.push({x: col * w + (row % 2 ? w / 2 : 0), y});
+    home = {x: W * (W > 600 ? 0.7 : 0.66), y: H * 0.36};
+  }
+  function hexPath(x, y, r) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; ctx.lineTo(x + r * Math.cos(a), y + r * Math.sin(a)); }
+    ctx.closePath();
+  }
+  function draw() {
+    const line = css('--hex'), teal = css('--teal'), violet = css('--violet'), maxD = R * 6;
+    ctx.clearRect(0, 0, W, H);
+    for (const hx of hexes) {
+      const d = Math.hypot(hx.x - home.x, hx.y - home.y);
+      hexPath(hx.x, hx.y, R * 0.92);
+      if (d < reach) { const k = 1 - d / maxD; ctx.globalAlpha = 0.18 + 0.55 * k * k; ctx.fillStyle = d < R ? violet : teal; ctx.fill(); ctx.globalAlpha = 1; }
+      else { ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.stroke(); }
+    }
+  }
+  function tick(ts) {
+    if (t0 === null) t0 = ts;
+    const maxD = R * 6;
+    reach = Math.min(maxD, maxD * (ts - t0) / 1400);
+    if (target) { home.x += (target.x - home.x) * 0.18; home.y += (target.y - home.y) * 0.18; }
+    draw();
+    const moving = target && Math.hypot(target.x - home.x, target.y - home.y) > 0.5;
+    raf = (reach < maxD || moving) ? requestAnimationFrame(tick) : null;
+  }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  function start() { build(); if (reduce) { reach = R * 6; draw(); } else { t0 = null; kick(); } }
+  c.parentElement.addEventListener('pointermove', e => {
+    const b = c.getBoundingClientRect(); target = {x: e.clientX - b.left, y: e.clientY - b.top};
+    if (reduce) { home = target; draw(); } else kick();
+  });
+  c.parentElement.addEventListener('pointerdown', e => {
+    const b = c.getBoundingClientRect(); target = {x: e.clientX - b.left, y: e.clientY - b.top}; kick();
+  });
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); reach = R * 6; draw(); }, 120); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', draw);
+  start();
+})();
+</script>
 </body>
 </html>
