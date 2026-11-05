@@ -3,78 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CITY-MOVE · Antwerp poster</title>
-<meta name="description" content="CITY-MOVE poster at Urban Transitions 2026: a longitudinal spatial data science framework for urban form change in Antwerp.">
+<title>CITY-MOVE · Oberon De Deurwaerder</title>
+<meta name="description" content="CITY-MOVE, and my work in it on routine city data for active and healthier urban environments.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#002D42;--text:#125A85;--muted:#4a5863;--city:#807CB9;--tint:#F1F0F8;--line:#d5dde2;--bg:#ffffff;--card:#F6F8FA}
-@media (prefers-color-scheme: dark){:root{--ink:#e6eef3;--text:#b9d3e4;--muted:#9fb0bc;--city:#a7a3d8;--tint:#22253a;--line:#33424c;--bg:#0f1a20;--card:#17242c}}
+:root{--ink:#002D42;--text:#125A85;--muted:#4a5863;--city:#807CB9;--tint:#F1F0F8;--line:#d5dde2;--bg:#ffffff}
+@media (prefers-color-scheme: dark){:root{--ink:#e6eef3;--text:#b9d3e4;--muted:#9fb0bc;--city:#a7a3d8;--tint:#22253a;--line:#33424c;--bg:#0f1a20}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 'Open Sans',Arial,sans-serif}
-main{max-width:760px;margin:0 auto;padding:40px 16px 64px}
+main{max-width:680px;margin:0 auto;padding:40px 16px 56px}
 h1,h2{font-family:Montserrat,Arial,sans-serif;color:var(--ink);margin:0}
-h1{font-size:clamp(26px,5vw,36px);line-height:1.2;text-wrap:balance}
-h2{font-size:21px;margin:40px 0 12px}
-.tag{display:inline-block;background:var(--city);color:#fff;font:700 14px Montserrat,Arial,sans-serif;padding:4px 12px;margin-bottom:16px}
-.authors{color:var(--muted);margin:12px 0 0}
-.lead{background:var(--tint);color:var(--ink);padding:20px 24px;margin:28px 0 0}
-ol.finds{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-ol.finds li{background:var(--card);padding:16px 20px;border-top:3px solid var(--city)}
-ol.finds b{color:var(--ink);display:block;font-family:Montserrat,Arial,sans-serif;margin-bottom:4px}
-ul{padding-left:20px;margin:0}
-li{margin:4px 0}
-a{color:var(--text);font-weight:600}
-a:hover{color:var(--ink)}
-.links{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.links a{display:block;padding:14px 18px;border:2px solid var(--line);text-decoration:none;color:var(--ink)}
+h1{font-size:clamp(28px,6vw,38px);line-height:1.15}
+h2{font-size:20px;margin:36px 0 10px}
+p{margin:0 0 12px}
+.tag{display:inline-block;background:var(--city);color:#fff;font:700 14px Montserrat,Arial,sans-serif;padding:4px 12px;margin-bottom:14px}
+.sub{color:var(--muted);margin-top:8px}
+.links{display:grid;gap:10px;margin-top:4px}
+.links a{display:block;padding:16px 20px;border:2px solid var(--line);text-decoration:none;color:var(--ink);font-weight:600}
 .links a span{display:block;font-weight:400;color:var(--muted);font-size:15px}
-.links a:hover{border-color:var(--city)}
-footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.links a:hover,.links a:focus-visible{border-color:var(--city)}
+footer{margin-top:44px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
 <main>
-  <span class="tag">Antwerp</span>
-  <h1>Findings from the CityMove project: A longitudinal spatial data science framework for urban form change in Antwerp</h1>
-  <p class="authors">Oberon De Deurwaerder, Lukar Thornton, Edwin Wouters (University of Antwerp) · Job van Exel (Erasmus University Rotterdam)<br>Poster, Urban Transitions 2026</p>
-
-  <p class="lead">The environment for walking, playing and cycling is not one thing: it is seven parts, each with its own map, pace of change and events. We rebuilt Antwerp's routine city data for every home to show it.</p>
-
-  <h2>Three findings</h2>
-  <ol class="finds">
-    <li><b>Well provided city-wide, short within a 5 to 10 minute walk</b>Measured from 121,803 homes along the street network. Beyond dense versus spacious, shortfalls do not come in bundles. Counted the city's way, 95% of residents have a public sports hall within reach; counted from the home, on foot, 41%.</li>
-    <li><b>Since 2013 the parts moved apart; the average stayed flat</b>Playgrounds and sports fields came within reach of more residents, while butchers, bakeries and pharmacies moved out of reach. Averaging the city's nine reach figures discards 88% of that change.</li>
-    <li><b>May 2026: one part was cut, and free timetables found it</b>Not told where or when, a scan of monthly public-transport timetables picked out the premetro closure at the right month. "A stop within 500 m", the usual marker, saw nothing.</li>
-  </ol>
-
-  <h2>For monitoring</h2>
-  <ul>
-    <li>Measure from the home, not the container.</li>
-    <li>Keep the parts apart: averages hide.</li>
-    <li>Detect change on amounts, not on yes/no markers.</li>
-  </ul>
-
-  <h2>More</h2>
-  <div class="links">
-    <a href="https://www.citymove.info">CITY-MOVE <span>The project website</span></a>
-    <a href="https://oberon-dd.github.io/citymove_data_map/">Routine-data landscape <span>Data mapped across the six partner cities</span></a>
-    <a href="poster.pdf">The poster <span>PDF, 80 × 100 cm</span></a>
-  </div>
-
-  <h2>Data used (all routine or open)</h2>
-  <ul>
-    <li>City of Antwerp: statistics portal (Stad in Cijfers) and city map layers</li>
-    <li>Flemish address register and road register; Groenkaart Vlaanderen (tree canopy)</li>
-    <li>Company register (KBO) for everyday shops; OpenStreetMap</li>
-    <li>De Lijn and NMBS timetables, archived by Transitland</li>
-    <li>Fietsflow bike counters (Flemish provinces)</li>
-  </ul>
+  <span class="tag">CITY-MOVE</span>
+  <h1>Healthier urban environments</h1>
+  <p class="sub">Oberon De Deurwaerder · PhD researcher, University of Antwerp</p>
 
   <h2>About CITY-MOVE</h2>
-  <p style="margin:0">CITY-MOVE studies how cities can support physical activity, with six partner cities: Antwerp, Bogotá, Kampala, Lima, Ljubljana and Rotterdam. Funded by the European Union under Horizon Europe (Grant No. 101136358).</p>
+  <p>CITY-MOVE studies how cities can accelerate, support and evaluate actions for active movement for health. It follows 13 physical activity actions in six cities on three continents: Antwerp, Bogotá, Kampala, Lima, Ljubljana and Rotterdam.</p>
 
-  <footer>Contact: Oberon De Deurwaerder, University of Antwerp · [oberon.dedeurwaerder@uantwerpen.be]</footer>
+  <h2>My role</h2>
+  <p>I work on the data side of the project: what cities already collect about the places where people walk, play and cycle, and what that routine data can show. First I mapped the routine data available in the six partner cities. Now I rebuild those data for every home, to measure what residents have within reach, how it changes over time, and which changes can be studied as natural experiments.</p>
+
+  <h2>Links</h2>
+  <nav class="links">
+    <a href="https://www.citymove.info">CITY-MOVE website <span>citymove.info</span></a>
+    <a href="poster.pdf">The poster (PDF) <span>Urban Transitions 2026, Antwerp</span></a>
+    <a href="https://oberon-dd.github.io/citymove_data_map/">Interactive data map <span>Routine data across the six partner cities</span></a>
+    <a href="https://doi.org/10.1136/bmjopen-2024-098226">Protocol paper <span>Van Olmen et al. (2025), BMJ Open 15(9): e098226</span></a>
+    <a href="[LINKEDIN URL]">LinkedIn <span>Oberon De Deurwaerder</span></a>
+  </nav>
+
+  <footer>CITY-MOVE is funded by the European Union under Horizon Europe (Grant No. 101136358).</footer>
 </main>
 </body>
 </html>
