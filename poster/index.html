@@ -19,7 +19,8 @@ a:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius
 .hero{position:relative;height:min(52vh,460px);min-height:300px;overflow:hidden;border-bottom:1px solid var(--rule);touch-action:pan-y}
 #field{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero-inner{position:absolute;left:0;right:0;bottom:0;max-width:720px;margin:0 auto;padding:0 20px 28px;pointer-events:none}
-.tag{display:inline-block;background:var(--violet);color:#fff;font:700 .85rem/1 'Bricolage Grotesque',system-ui,sans-serif;padding:7px 12px;margin-bottom:14px}
+.logo{display:inline-block;background:#fff;padding:8px 12px;border-radius:6px;margin-bottom:14px;line-height:0}
+.logo img{height:64px;width:auto}
 h1{font:700 clamp(2.3rem,9vw,4rem)/0.98 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-0.02em;color:var(--ink);margin:0;max-width:11ch}
 h1 span{background:color-mix(in srgb,var(--ground) 85%,transparent);box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hint{position:absolute;right:20px;top:16px;font:500 .85rem/1.35 'Bricolage Grotesque',system-ui,sans-serif;color:var(--muted);max-width:20ch;text-align:right;pointer-events:none}
@@ -35,7 +36,10 @@ p{margin:0 0 12px}
 .links a:hover{border-color:var(--teal)}
 .links svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;grid-row:span 2}
 .links small{font:400 .95rem/1.4 Literata,Georgia,serif;color:var(--muted)}
-footer{max-width:720px;margin:0 auto;padding:18px 20px 32px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--rule)}
+footer{max-width:720px;margin:0 auto;padding:20px 20px 36px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
+footer .eu{background:#fff;padding:6px 10px;border-radius:6px;line-height:0}
+footer .eu img{height:44px;width:auto}
+footer p{margin:0;flex:1 1 220px}
 @media (max-width:600px){.hint{display:none}}
 @media (prefers-reduced-motion: reduce){.links a{transition:none}}
 </style>
@@ -45,7 +49,7 @@ footer{max-width:720px;margin:0 auto;padding:18px 20px 32px;color:var(--muted);f
   <canvas id="field" aria-hidden="true"></canvas>
   <p class="hint">Hexagons light up within a short walk of your pointer.</p>
   <div class="hero-inner">
-    <span class="tag">CITY-MOVE</span>
+    <span class="logo"><img src="citymove_logo.png" alt="CITY-MOVE" width="84" height="64"></span>
     <h1><span>Healthier urban environments</span></h1>
   </div>
 </header>
@@ -79,7 +83,7 @@ footer{max-width:720px;margin:0 auto;padding:18px 20px 32px;color:var(--muted);f
   <p>I work on the data side of the project: what cities already collect about the places where people walk, play and cycle, and what that routine data can show. First I mapped the routine data available in the six partner cities. Now I rebuild those data for every home, to measure what residents have within reach, how it changes over time, and which changes can be studied as natural experiments.</p>
 </main>
 
-<footer>CITY-MOVE is funded by the European Union under Horizon Europe (Grant No. 101136358).</footer>
+<footer><span class="eu"><img src="eu_funded.jpg" alt="Funded by the European Union" width="210" height="44"></span><p>CITY-MOVE is funded by the European Union under Horizon Europe (Grant No. 101136358).</p></footer>
 
 <script>
 (() => {
